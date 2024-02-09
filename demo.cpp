@@ -8,11 +8,9 @@ using namespace alglib;
 
 int main(int argc, char **argv)
 {
-   
-        // We build a bicubic vector-valued spline for f(x,y)=[x+2*y, 3*x*y] for (x,y) in [0,1].
         real_1d_array x = "[0.0, 1.0, 2.0]";
         real_1d_array y = "[0.0, 1.0, 2.0]";
-        real_1d_array f = "[5.00, 5.00, 5.00, 5.00,5.00, 5.00, 5.00, 5.00,5.00]"; // 2x2 grid of data points, 2D vector-valued
+        real_1d_array f = "[5.00, 5.00, 5.00,5.00,5.00,5.00,5.00, 5.00,5.00]";
         spline2dinterpolant s;
         real_2d_array c;
         ae_int_t m;
@@ -20,7 +18,7 @@ int main(int argc, char **argv)
         ae_int_t d;
 
         // Build the bicubic vector-valued spline
-        spline2dbuildbicubicv(x, 2, y, 2, f, 1, s);
+        spline2dbuildbicubicv(x, y, f, 1, s);
 
         // unpack and test
         spline2dunpackv(s, m, n, d, c);
